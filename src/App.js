@@ -6,11 +6,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
+      
         <p>
-          <button>Hello World</button>
+          <button onClick={()=>{window.alert("Hello World")}}>Hello World</button>
         </p>
-        
+      
       </header>
     </div>
   );
