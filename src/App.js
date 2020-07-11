@@ -6,10 +6,12 @@ function App() {
 
   const increment = () => {
     setCount(count + 1);
+    console.log(count);
   }
 
   const decrement = () => {
     setCount(count - 1);
+    console.log(count);
   }
 
   return (
