@@ -14,10 +14,15 @@ function App() {
     console.log(count);
   }
 
+  const reset = () => {
+    setCount(0);
+  }
+
   return (
     <div>
       <button onClick={increment}>いいね！</button>
       <button onClick={decrement}>よくないね！</button>
+      <button onClick={reset}>リセット</button>
       {count}
     </div>
   );
