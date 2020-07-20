@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
+import Card from './Card';
+
+const sampleArray = [
+  { id: 1, name: 'aaa', date: 19920527 },
+  { id: 2, name: 'bbb', date: 19920528 },
+  { id: 3, name: 'ccc', date: 19920529 },
+  { id: 4, name: 'ddd', date: 19920531 },
+  { id: 5, name: 'eee', date: 19920501 }
+];
 
 function App() {
-  const [count, setCount] = useState("hatsuki");
-
-  const increment = () => {
-    setCount(count + "hatsuki");
-    console.log(count);
-  }
 
   return (
     <div>
-      <button onClick={increment}>add</button>
-      {count}
+      {sampleArray.map((data, index) => {
+        return (
+          <Card key={index} id={data.id} name={data.name} date={data.date} />
+        )
+      })}
     </div>
   );
 }
+
 
 export default App;
