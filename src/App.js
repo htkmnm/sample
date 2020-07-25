@@ -14,16 +14,20 @@ function App() {
 
   return (
     <table>
-      <tr>
-        <td>id</td>
-        <td>name</td>
-        <td>date</td>
-      </tr>
-      {sampleArray.map((data, index) => {
-        return (
-          <Card key={index} id={data.id} name={data.name} date={data.date} />
-        )
-      })}
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>name</td>
+          <td>date</td>
+        </tr>
+      </thead>
+      <tbody>
+        {sampleArray.map((data, index) => {
+          return (
+            <Card key={index} id={data.id} name={data.name} date={data.date} />
+          )
+        })}
+      </tbody>
     </table>
   );
 };
