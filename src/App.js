@@ -1,34 +1,19 @@
 import React from 'react';
-import './App.css';
-import Card from './Card';
-
-const sampleArray = [
-  { id: 1, name: 'aaa', date: 19920527 },
-  { id: 2, name: 'bbb', date: 19920528 },
-  { id: 3, name: 'ccc', date: 19920529 },
-  { id: 4, name: 'ddd', date: 19920531 },
-  { id: 5, name: 'eee', date: 19920501 }
-];
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ComponentA from './ComponentA';
+import ComponentB from './ComponentB';
+import ComponentC from './ComponentC';
 
 function App() {
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>id</td>
-          <td>name</td>
-          <td>date</td>
-        </tr>
-      </thead>
-      <tbody>
-        {sampleArray.map((data, index) => {
-          return (
-            <Card key={index} id={data.id} name={data.name} date={data.date} />
-          )
-        })}
-      </tbody>
-    </table>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={ComponentA} />
+        <Route exact path='/componentb' component={ComponentB} />
+        <Route exact path='/componentc' component={ComponentC} />
+      </Switch>
+    </Router>
   );
 };
 
