@@ -4,6 +4,14 @@ import { Table } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const sampleArray = [
+    { id: 1, name: 'aaa', date: 19921123, no: '-' },
+    { id: 2, name: 'bbb', date: 19921124, no: '-' },
+    { id: 3, name: 'ccc', date: 19921125, no: '-' },
+    { id: 4, name: 'ddd', date: 19921126, no: '-' },
+    { id: 5, name: 'eee', date: 19921127, no: '-' }
+];
+
 const ComponentA = () => {
 
     return (
@@ -22,7 +30,7 @@ const ComponentA = () => {
                         <Card.Text>
                             Some quick example text to build on the card title and make up the bulk of
                             the card's content.
-    </Card.Text>
+                            </Card.Text>
                         <Card.Link href='#'>Card Link</Card.Link>
                         <Card.Link href='#'>Another Link</Card.Link>
                     </Card.Body>
@@ -58,6 +66,28 @@ const ComponentA = () => {
                         <td>@twitter</td>
                     </tr>
                 </tbody>
+            </Table>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                {sampleArray.map((data, index) => {
+                    return (
+                        <tbody key={index}>
+                            <tr>
+                                <td>{data.id}</td>
+                                <td>{data.name}</td>
+                                <td>{data.date}</td>
+                                <td>{data.no}</td>
+                            </tr>
+                        </tbody>
+                    );
+                })}
             </Table>
         </>
     );
