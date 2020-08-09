@@ -1,47 +1,88 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Axios from 'axios';
-import { Table } from 'react-bootstrap';
+import { ADD_EVENT, DELETE_ALL_EVENT } from '../actions/index';
+import reducer from '../reducers/index';
+import { Button, Form, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ComponentB = () => {
-    const [data, setData] = useState([]);
+    const [state, dispatch] = useReducer(reducer, []);
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
 
-    useEffect(() => {
-        Axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then((res) => {
-                setData(res.data);
-            });
-    }, []);
+    const handleClick = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: ADD_EVENT,
+            title,
+            body
+        });
+        setTitle('');
+        setBody('');
+    };
+
+    const deleteAllEvent = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: DELETE_ALL_EVENT
+        });
+    };
+
     return (
-        <>
-            <div>
-                <div>ComponentB</div>
-                <Link to='componentc'>ComponentCへ移動</Link>
-            </div>
+        <div>
+            <div>ComponentB</div>
+            <Link to="componentc">ComponentCへ移動</Link>
+
+            <Form>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <Form.Label>Body</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="body"
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
+                    />
+                </Form.Group>
+                <Button variant="primary" onClick={handleClick}>
+                    イベント作成
+                </Button>
+                <Button variant="danger" onClick={deleteAllEvent}>
+                    イベント全削除
+                </Button>
+            </Form>
+            <h1>Table</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>userID</th>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Body</th>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>body</th>
+                        <th>#</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((element, index) => {
+                    {state.map((data, index) => {
                         return (
                             <tr key={index}>
-                                <td>{element.userId}</td>
-                                <td>{element.id}</td>
-                                <td>{element.title}</td>
-                                <td>{element.body}</td>
+                                <td>{data.id}</td>
+                                <td>{data.title}</td>
+                                <td>{data.body}</td>
+                                <td>
+                                    <Button variant="danger">削除</Button>
+                                </td>
                             </tr>
                         );
                     })}
                 </tbody>
             </Table>
-        </>
+        </div>
     );
 };
 
