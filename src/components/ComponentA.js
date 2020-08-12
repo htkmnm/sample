@@ -8,13 +8,11 @@ const ComponentA = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        console.log('useEffect が呼び出されました。');
         Axios.get('https://jsonplaceholder.typicode.com/posts')
             .then((res) => {
                 setData(res.data);
             });
     }, []);
-    console.log(data, 'data の確認')
 
     return (
         <>

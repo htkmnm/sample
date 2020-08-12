@@ -10,19 +10,16 @@ const ComponentC = () => {
     const [state, dispatch] = useReducer(reducer, initialCount);
 
     const increment = () => {
-        console.log('increment');
         dispatch({
             type: 'INCREMENT'
         });
     };
     const decrement = () => {
-        console.log('decrement');
         dispatch({
             type: 'DECREMENT'
         });
     };
     const reset = () => {
-        console.log('reset');
         dispatch({
             type: 'RESET'
         });
