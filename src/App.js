@@ -5,7 +5,6 @@ import ComponentB from './components/ComponentB';
 import ComponentC from './components/ComponentC';
 
 function App() {
-
   return (
     <Router>
       <Switch>
