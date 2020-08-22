@@ -35,7 +35,6 @@ const ComponentB = () => {
         <div>
             <div>ComponentB</div>
             <Link to="componentc">ComponentCへ移動</Link>
-
             <Form>
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Title</Form.Label>
