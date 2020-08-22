@@ -9,8 +9,6 @@ const reducer = (state = [], action) => {
         case DELETE_ALL_EVENT:
             return [];
         case DELETE_LINE_EVENT:
-            console.log(state, 'stateの確認');
-            console.log(action, 'actionの確認');
             const result = state.filter((data) => data.id !== action.id);
             return result;
         default:
