@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import reducer from '../reducers/index';
+import ComponentD from './ComponentD';
 
 const initialCount = {
     count: 0
@@ -29,6 +30,7 @@ const ComponentC = () => {
         <div>
             <div>ComponentC</div>
             <Link to='/'>ComponentAへ移動</Link>
+            <ComponentD />
             <button onClick={increment}>+</button>
             <button onClick={decrement}>-</button>
             <button onClick={reset}>reset</button>
