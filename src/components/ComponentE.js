@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Store } from '../store/index';
-import { INCREMENT, DECREMENT, RESET } from '../actions/index';
+import { INCREMENT, DECREMENT, RESET, TENPLUS } from '../actions/index';
 
 const ComponentE = () => {
     const { globalState, setGlobalState } = useContext(Store);
@@ -14,9 +14,14 @@ const ComponentE = () => {
             type: DECREMENT
         });
     };
-    const creaClick = () => {
+    const crearClick = () => {
         setGlobalState({
             type: RESET
+        });
+    };
+    const tenplusClick = () => {
+        setGlobalState({
+            type: TENPLUS
         });
     };
     console.log(globalState);
@@ -25,7 +30,8 @@ const ComponentE = () => {
             <h1>ComponentE.js</h1>
             <button onClick={handleClick}>+1</button>
             <button onClick={dawnClick}>-1</button>
-            <button onClick={creaClick}>reset</button>
+            <button onClick={crearClick}>reset</button>
+            <button onClick={tenplusClick}>+10</button>
         </div>
     );
 };

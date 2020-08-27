@@ -1,4 +1,4 @@
-import { ADD_EVENT, DELETE_ALL_EVENT, DELETE_LINE_EVENT, INCREMENT, DECREMENT, RESET } from '../actions/index';
+import { ADD_EVENT, DELETE_ALL_EVENT, DELETE_LINE_EVENT, INCREMENT, DECREMENT, RESET, TENPLUS } from '../actions/index';
 
 const reducer = (state = [], action) => {
     switch (action.type) {
@@ -22,9 +22,18 @@ const reducer = (state = [], action) => {
         case RESET:
             // 0に戻す場合
             return { ...state, count: 0 };
+        case TENPLUS:
+            // 3の倍数の時のみ+10
+            if (state.count === 0) {
+                return { ...state.count, count: state.count };
+            } else if (state.count % 3 === 0) {
+                return { ...state, count: state.count + 10 };
+            } else {
+                return { ...state.count, count: state.count };
+            };
         default:
             return state;
-    }
+    };
 };
 
 export default reducer;

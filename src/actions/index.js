@@ -4,3 +4,4 @@ export const DELETE_LINE_EVENT = 'DELETE_LINE_EVENT';
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
+export const TENPLUS = 'TENPLUS';
